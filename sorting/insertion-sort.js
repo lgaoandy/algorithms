@@ -1,3 +1,4 @@
+// Time Complexity O(n^2)
 function sortElement(array, i) {
 	let numToInsert = array[i];
 	console.log(`\n\x1b[36m%s\x1b[0m\n`, `Sorting ${numToInsert}`);

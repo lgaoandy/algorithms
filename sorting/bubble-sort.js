@@ -1,3 +1,4 @@
+// Time Complexity O(n^2)
 function bubbleSort(array) {
 	let swapped;
 	let iteration = 0;

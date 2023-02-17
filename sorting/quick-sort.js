@@ -1,3 +1,4 @@
+// Time Complexity O(n^2)
 function quickSort(array) {
 	if (array.length <= 1) {
 		return array;
@@ -19,6 +20,7 @@ function quickSort(array) {
 
 	return [...quickSort(leftArray), pivot, ...quickSort(rigthArray)];
 }
+
 const ex1 = [-6, 20, 8, -2, 4];
 const ex2 = [8, 3, 44, -9, -23];
 
