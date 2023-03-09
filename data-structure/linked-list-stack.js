@@ -1,33 +1,33 @@
 const LinkedList = require("./linked-list-with-tail")
 
 class LinkedListStack {
-	constructor() {
-		this.list = new LinkedList()
-	}
+    constructor() {
+        this.list = new LinkedList()
+    }
 
-	push(value) {
-		this.list.prepend(value)
-	}
+    push(value) {
+        this.list.prepend(value)
+    }
 
-	pop() {
-		return this.list.removeFromFront(0)
-	}
+    pop() {
+        return this.list.removeFromFront(0)
+    }
 
-	peek() {
-		return this.list.head.value
-	}
+    peek() {
+        return this.list.head.value
+    }
 
-	isEmpty() {
-		return this.list.isEmpty()
-	}
+    isEmpty() {
+        return this.list.isEmpty()
+    }
 
-	getSize() {
-		return this.list.getSize()
-	}
+    getSize() {
+        return this.list.getSize()
+    }
 
-	print() {
-		return this.list.print()
-	}
+    print() {
+        return this.list.print()
+    }
 }
 
 const stack = new LinkedListStack()
