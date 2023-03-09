@@ -54,11 +54,12 @@ class BinarySearchTree {
 const tree = new BinarySearchTree()
 console.log("\x1b[35misEmpty\x1b[0m(): %s", tree.isEmpty())
 
-tree.insert(20)
-tree.insert(155)
-tree.insert(895)
-tree.insert(32)
-tree.insert(65)
+tree.insert(10)
 tree.insert(5)
+tree.insert(15)
+tree.insert(3)
+tree.insert(7)
+tree.insert(22)
+tree.insert(13)
 
 tree.print()
