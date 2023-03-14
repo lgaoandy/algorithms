@@ -1,8 +1,6 @@
-/*
-    ** PROBLEM **
+/* ** PROBLEM **
     Given a string s, find the length of the 
     longest substring without repeating characters.
-
 */
 
 // First Solution

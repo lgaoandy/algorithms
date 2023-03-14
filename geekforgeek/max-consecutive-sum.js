@@ -11,35 +11,35 @@
 
 const maxConsecutiveSum = function (array, k) {
 	// define n as size
-	const n = array.length;
+	const n = array.length
 
 	// invalid case
 	if (k > n) {
-		return -1;
+		return -1
 	}
 
 	// define current sum
-	let currentSum = 0;
+	let currentSum = 0
 
 	// get the outcome for the first window
 	for (let i = 0; i < k; i++) {
-		currentSum += array[i];
+		currentSum += array[i]
 	}
 
-	let maxSum = currentSum;
+	let maxSum = currentSum
 
 	// sliding window technique
 	for (let i = 1; i <= n - k; i++) {
-		currentSum = currentSum - array[i - 1] + array[i + k - 1];
+		currentSum = currentSum - array[i - 1] + array[i + k - 1]
 
 		if (currentSum > maxSum) {
-			maxSum = currentSum;
+			maxSum = currentSum
 		}
 	}
 
-	return maxSum;
-};
+	return maxSum
+}
 
-console.log(maxConsecutiveSum([100, 200, 300, 400, 500, 600], 2));
-console.log(maxConsecutiveSum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4));
-console.log(maxConsecutiveSum([2, 3], 3));
+console.log(maxConsecutiveSum([100, 200, 300, 400, 500, 600], 2))
+console.log(maxConsecutiveSum([1, 4, 2, 10, 23, 3, 1, 0, 20], 4))
+console.log(maxConsecutiveSum([2, 3], 3))

@@ -22,3 +22,11 @@ _Usages_
 - Searching
 - Sorting
 - Implement abstract data types such as lookup tables and priority queues
+
+_Tree Traversal_
+
+- Visiting every node in the tree
+- Can be achieved in different ways
+     - Depth First Search (DFS)
+     - Breadth First Search (BFS)
+
