@@ -63,29 +63,107 @@ class BinarySearchTree {
 
 	// Preorder Depth First Search
 	preOrderDFS(root = this.root) {
-		if (root) {
-			console.log(root.value)
-			this.preOrderDFS(root.left)
-			this.preOrderDFS(root.right)
+		let nodes = []
+		const traverse = (node) => {
+			if (node) {
+				nodes.push(node.value)
+				traverse(node.left)
+				traverse(node.right)
+			}
 		}
+		traverse(root)
+		return nodes.join(" ")
 	}
 
 	// InOrder Depth First Search
 	inOrderDFS(root = this.root) {
-		if (root) {
-			this.inOrderDFS(root.left)
-			console.log(root.value)
-			this.inOrderDFS(root.right)
+		let nodes = []
+		const transverse = (node) => {
+			if (node) {
+				transverse(node.left)
+				nodes.push(node.value)
+				transverse(node.right)
+			}
 		}
+		transverse(root)
+		return nodes.join(" ")
 	}
 
 	// postOrder Depth First Search
 	postOrderDFS(root = this.root) {
-		if (root) {
-			this.postOrderDFS(root.left)
-			this.postOrderDFS(root.right)
-			console.log(root.value)
+		let nodes = []
+		const transverse = (node) => {
+			if (node) {
+				transverse(node.left)
+				transverse(node.right)
+				nodes.push(node.value)
+			}
 		}
+		transverse(root)
+		return nodes.join(" ")
+	}
+
+	levelOrder() {
+		// Use the optimised queue implementation
+		const queue = []
+		const nodes = []
+		queue.push(this.root)
+		while (queue.length) {
+			let curr = queue.shift()
+			nodes.push(curr.value)
+			if (curr.left) {
+				queue.push(curr.left)
+			}
+			if (curr.right) {
+				queue.push(curr.right)
+			}
+		}
+		return nodes.join(" ")
+	}
+
+	min(root = this.root) {
+		if (!root.left) {
+			return root.value
+		} else {
+			return this.min(root.left)
+		}
+	}
+
+	max(root = this.root) {
+		if (!root.right) {
+			return root.value
+		} else {
+			return this.max(root.right)
+		}
+	}
+
+	delete(value) {
+		this.root = this.deleteNode(this.root, value)
+	}
+
+	deleteNode(root, value) {
+		if (root === null) {
+			return root
+		}
+
+		if (value < root.value) {
+			root.left = this.deleteNode(root.left, value)
+		} else if (value > root.value) {
+			root.right = this.deleteNode(root.right, value)
+		} else {
+			// case 1 - tree node
+			if (!root.left && !root.right) {
+				return null
+			}
+			if (!root.left) {
+				return root.right
+			} else if (!root.right) {
+				return root.left
+			}
+			root.value = this.min(root.right)
+			root.right = this.deleteNode(root.right, root.value)
+		}
+		return root
 	}
 
 	print() {
@@ -112,11 +190,13 @@ console.log("\x1b[35msearch\x1b[0m(%s):", 10, tree.search(10))
 console.log("\x1b[35msearch\x1b[0m(%s):", 11, tree.search(11))
 console.log("\x1b[35msearch\x1b[0m(%s):", 21, tree.search(21))
 
-console.log("\n\x1b[31mPreorder Depth First Search\x1b[0m:")
-tree.preOrderDFS()
+console.log("\n\x1b[33mPreorder Depth First Search\x1b[0m:", tree.preOrderDFS())
+console.log("\x1b[33mInorder Depth First Search\x1b[0m:", tree.inOrderDFS())
+console.log("\x1b[33mPostorder Depth First Search\x1b[0m:", tree.postOrderDFS())
+console.log("\x1b[33mBreadth First Search\x1b[0m:", tree.levelOrder(), "\n")
 
-console.log("\n\x1b[31mInorder Depth First Search\x1b[0m:")
-tree.inOrderDFS()
+console.log("\x1b[35mmin\x1b[0m():", tree.min())
+console.log("\x1b[35mmax\x1b[0m():", tree.max())
 
-console.log("\n\x1b[31mPostorder Depth First Search\x1b[0m:")
-tree.postOrderDFS()
+console.log("\x1b[31mdelete\x1b[0m(%s)", 15, tree.delete(15))
+tree.print()
